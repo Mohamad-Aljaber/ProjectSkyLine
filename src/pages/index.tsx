@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Button } from "@mui/material";
+
 export default function Home() {
   return (
     <>
@@ -22,6 +23,8 @@ export default function Home() {
       <Button variant="text">Text</Button>
       <Button variant="contained">Contained</Button>
       <Button variant="outlined">Outlined</Button>
+      <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita odit nobis repudiandae ratione quos illum provident ducimus ea rem itaque? Quod, consequuntur id laudantium repellat veritatis incidunt laboriosam sapiente alias.</h1>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur voluptatum culpa blanditiis veniam modi in eligendi tenetur minima perferendis a nemo quis nesciunt laboriosam accusantium omnis, sapiente veritatis officia sit.</p>
       </div>
     </>
   );
