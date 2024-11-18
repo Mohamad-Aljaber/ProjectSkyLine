@@ -5,10 +5,11 @@ const theme = createTheme({
     fontFamily: "var(--font-inria-sans), Arial, sans-serif",
   },
   palette: {
+    mode:"dark",
     primary: {
       main: "#008CFF",
-      light: "#0728FF",
-      dark: "#3564FF",
+      light: "#3564FF",
+      dark: "#0728FF",
     },
     secondary: {
       main: "#45E6D1",
