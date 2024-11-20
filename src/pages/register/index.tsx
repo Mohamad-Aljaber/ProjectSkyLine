@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import { useRouter } from "next/router";
 import InputFieldWithIcon from "@/components/mui/InputFieldWithIcon";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import EmailIcon from "@mui/icons-material/Email";
@@ -5,37 +7,62 @@ import {
   Container,
   Box,
   Typography,
-  Theme,
-  useTheme,
   Grid,
   Button,
+  useTheme,
 } from "@mui/material";
+import LanguageSelect from "@/components/mui/LanguageSelect";
 export default function Index() {
   const theme = useTheme();
+  const router = useRouter();
   const PMain = theme.palette.primary.main;
-  const PLight = theme.palette.primary.light;
   const PDark = theme.palette.primary.dark;
+  const [companyNumber, setCompanyNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Form Submitted:", { companyNumber, email });
+    router.push("/login");
+  };
+  const inputs = [
+    {
+      label: "Company number",
+      value: companyNumber,
+      onChange: (value: string) => setCompanyNumber(value),
+      placeholder: "",
+      icon: <VisibilityIcon />,
+    },
+    {
+      label: "Company email",
+      value: email,
+      onChange: (value: string) => setEmail(value),
+      placeholder: "ourfamily@gmail.com",
+      type: "email",
+      icon: <EmailIcon />,
+    },
+  ];
 
   return (
     <>
-      <Grid
-        container
-        // spacing={4}
-      >
+      <LanguageSelect />
+      <Grid container>
         <Grid
           item
+          xs={12}
           md={7}
           sx={{
             textAlign: "center",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            height: "100vh",
           }}
         >
           <Container>
             <Box
               component="form"
-              sx={{ display: "flex", gap: "30px", flexDirection: "column" }}
+              onSubmit={handleSubmit}
+              sx={{ display: "flex", gap: "20px", flexDirection: "column" }}
             >
               <Typography
                 variant="h2"
@@ -47,27 +74,42 @@ export default function Index() {
                   Register your account
                 </Typography>
               </Typography>
-              <InputFieldWithIcon label="Company number">
-                <VisibilityIcon />
-              </InputFieldWithIcon>
-              <InputFieldWithIcon
-                type="email"
-                label="Company email"
-                placeholder="ourfamily@gmail.com"
-              >
-                <EmailIcon />
-              </InputFieldWithIcon>
+
+              {/* توليد الحقول باستخدام map */}
+              {inputs.map((input, index) => (
+                <InputFieldWithIcon
+                  key={index}
+                  label={input.label}
+                  value={input.value}
+                  onChange={input.onChange}
+                  placeholder={input.placeholder}
+                  type={input.type || "text"}
+                >
+                  {input.icon}
+                </InputFieldWithIcon>
+              ))}
+
               <Button
+                type="submit"
                 variant="contained"
-                sx={{ background: `${PDark}`, padding: 2, my: 3 }}
+                sx={{
+                  background: `${PDark}`,
+                  padding: 2,
+                  my: 3,
+                  "&:hover": {
+                    background: `${PMain}`,
+                  },
+                }}
               >
-                Contained
+                Register
               </Button>
             </Box>
           </Container>
         </Grid>
+
         <Grid
           item
+          xs={0}
           md={5}
           sx={{
             background: `${PMain}D6`,
@@ -88,7 +130,7 @@ export default function Index() {
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               marginBottom: "20px",
-              height: "30%",
+              height: "20%",
             }}
           >
             SkyLine
