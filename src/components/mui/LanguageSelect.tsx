@@ -12,8 +12,8 @@ export default function LanguageSelect() {
   const countries = [
     {
       text: "Arabic",
-      pathImageFlag: "./images/Flagsofcountries1.png",
-      
+      pathImageFlag: "images/Flagsofcountries1.png",
+      value: "arabic",
     },
     {
       text: "Turkey",
@@ -39,13 +39,12 @@ export default function LanguageSelect() {
   return (
     <Box
       sx={{
-        background: "red",
         position: "absolute",
         top: "1rem",
         left: "1rem",
       }}
     >
-      <FormControl sx={{ width: 200 }}>
+      <FormControl  sx={{ width: 200 }}>
         <InputLabel
           id="demo-simple-select-label"
           sx={{

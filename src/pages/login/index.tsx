@@ -18,10 +18,8 @@ export default function Index() {
   const router = useRouter();
   const PMain = theme.palette.primary.main;
   const PDark = theme.palette.primary.dark;
-
   const [password, setPassord] = useState("");
   const [email, setEmail] = useState("");
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form Submitted:", { password, email });
@@ -30,7 +28,7 @@ export default function Index() {
 
   const inputs = [
     {
-      type: "email", // تعديل النوع إلى email
+      type: "email",
       label: "Email",
       placeholder: "SkyLine@gmail.com",
       value: email,
@@ -119,7 +117,7 @@ export default function Index() {
                 }}
               >
                 <Typography sx={{ color: "#A9A9A9" }}>
-                  Don't have account?{" "}
+                  Don't have account?
                 </Typography>
                 <Button
                   variant="outlined"

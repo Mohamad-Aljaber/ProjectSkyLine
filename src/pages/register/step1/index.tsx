@@ -75,7 +75,7 @@ export default function Index() {
                 </Typography>
               </Typography>
 
-              {/* توليد الحقول باستخدام map */}
+              {/* توليد الحقول   */}
               {inputs.map((input, index) => (
                 <InputFieldWithIcon
                   key={index}
