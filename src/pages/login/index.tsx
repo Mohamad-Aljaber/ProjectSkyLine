@@ -42,7 +42,7 @@ export default function Index() {
       label: "Password",
       placeholder: "8+ characters",
       value: password,
-      onChange: (value: string) => setEmail(value),
+      onChange: (value: string) => setPassord(value),
       icon: <VisibilityIcon />,
     },
   ];

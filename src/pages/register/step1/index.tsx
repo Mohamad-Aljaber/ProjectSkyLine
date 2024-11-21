@@ -22,7 +22,7 @@ export default function Index() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form Submitted:", { companyNumber, email });
-    router.push("register/step2");
+    router.push("step2");
   };
   const inputs = [
     {
