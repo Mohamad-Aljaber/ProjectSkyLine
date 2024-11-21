@@ -25,17 +25,17 @@ export default function Index() {
     companyLogo: "",
   });
 
-  // دالة لتحديث حقل معين في الكائن
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
-      [field]: value, // تحديث الحقل المحدد
+      [field]: value,
     }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form Submitted:", formData);
+    router.push("step4");
   };
 
   const inputs = [
