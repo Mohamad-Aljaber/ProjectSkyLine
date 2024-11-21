@@ -10,11 +10,6 @@ import {
   useTheme,
 } from "@mui/material";
 
-// مكونات الأيقونات
-import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-import HomeWorkIcon from "@mui/icons-material/HomeWork";
-import DescriptionIcon from "@mui/icons-material/Description";
-
 export default function Index() {
   const theme = useTheme();
   const router = useRouter();
@@ -30,7 +25,6 @@ export default function Index() {
     cvv: "",
   });
 
-  // دالة لتحديث القيم بناءً على المدخلات
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
@@ -38,14 +32,12 @@ export default function Index() {
     }));
   };
 
-  // دالة الإرسال
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form Submitted:", formData);
-    // router.push("step4"); // الانتقال إلى الصفحة التالية
+    router.push("step3"); // الانتقال إلى الصفحة التالية
   };
 
-  // بيانات بطاقات الدفع
   const paymentCards = [
     { text: "paypal", path: "/images/paypal.png" },
     { text: "VISA", path: "/images/VISA.png" },
@@ -53,7 +45,6 @@ export default function Index() {
     { text: "mastercard", path: "/images/mastercard.png" },
   ];
 
-  // الحقول كاملة العرض
   const inputsFullWidth = [
     {
       type: "email",
@@ -83,7 +74,6 @@ export default function Index() {
     },
   ];
 
-  // الحقول نصف العرض
   const inputs = [
     {
       type: "text",
@@ -104,17 +94,19 @@ export default function Index() {
   return (
     <>
       <Grid container>
+        {/* العمود الرئيسي */}
         <Grid
           item
           xs={12}
           md={7}
           sx={{
-            textAlign: "center",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: "100vh",
+            height: { xs: "100vh", md: "100vh" },
             overflow: "auto",
+            px: { xs: 2, sm: 4, md: 6 },
+            py: { xs: 4, md: 0 },
           }}
         >
           <Container>
@@ -126,35 +118,52 @@ export default function Index() {
                 flexDirection: "column",
               }}
             >
+              {/* العنوان */}
               <Typography
                 variant="h2"
                 component="h2"
-                sx={{ fontWeight: 700, textAlign: "start" }}
+                sx={{
+                  fontWeight: 700,
+                  textAlign: "start",
+                  fontSize: { xs: "1.8rem", md: "2.5rem" },
+                }}
               >
                 Checkout
               </Typography>
               <Typography
                 variant="h6"
                 component="h6"
-                sx={{ fontWeight: 700, textAlign: "start" }}
+                sx={{
+                  fontWeight: 700,
+                  textAlign: "start",
+                  fontSize: { xs: "1rem", md: "1.2rem" },
+                }}
               >
                 Payment Details
               </Typography>
 
-              {/* عرض بطاقات الدفع */}
-              <Box sx={{ textAlign: "start", mb: 3 }}>
+              {/* بطاقات الدفع */}
+              <Box
+                sx={{
+                  textAlign: "start",
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: 2,
+                  mb: 3,
+                }}
+              >
                 {paymentCards.map((item, index) => (
                   <img
                     key={index}
                     src={item.path}
                     alt={item.text}
-                    width="100px"
+                    width="80px"
                     style={{ marginRight: "10px" }}
                   />
                 ))}
               </Box>
 
-              {/* الحقول كاملة العرض */}
+              {/* الحقول كبيرة العرض */}
               {inputsFullWidth.map((input, index) => (
                 <InputFieldWithIcon
                   key={index}
@@ -169,10 +178,11 @@ export default function Index() {
                 </InputFieldWithIcon>
               ))}
 
-              {/* الحقول نصف العرض */}
+              {/* الحقول صغيرة العرض */}
               <Box
                 sx={{
                   display: "flex",
+                  flexDirection: { xs: "column", sm: "row" },
                   justifyContent: "space-between",
                   gap: 2,
                 }}
@@ -202,12 +212,13 @@ export default function Index() {
                 type="submit"
                 variant="contained"
                 sx={{
+                  mt: 3,
                   background: `${PDark}`,
                   padding: 2,
-                  my: 2,
                   "&:hover": {
                     background: `${PMain}`,
                   },
+                  fontSize: { xs: "0.9rem", sm: "1rem", md: "1.3rem" },
                 }}
               >
                 Continue to Checkout
@@ -216,7 +227,6 @@ export default function Index() {
           </Container>
         </Grid>
 
-        {/* الجزء الجانبي */}
         <Grid
           item
           xs={0}
