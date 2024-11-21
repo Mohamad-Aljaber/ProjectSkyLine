@@ -172,7 +172,8 @@ export default function Index() {
                   onChange={input.onChange}
                   placeholder={input.placeholder}
                   type={input.type || "text"}
-                  iconPosition={input.iconPosition}
+                  iconPosition={input.iconPosition === "start" || input.iconPosition === "end" ? input.iconPosition : undefined}
+
                 >
                   {input.icon}
                 </InputFieldWithIcon>

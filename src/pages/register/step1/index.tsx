@@ -83,7 +83,7 @@ export default function Index() {
                   value={input.value}
                   onChange={input.onChange}
                   placeholder={input.placeholder}
-                  type={input.type || "text"}
+                  type={input.type}
                 >
                   {input.icon}
                 </InputFieldWithIcon>

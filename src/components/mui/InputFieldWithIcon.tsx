@@ -14,7 +14,7 @@ interface InputFieldWithIconProps {
   children?: ReactNode;
   iconPosition?: "start" | "end";
   value?: string;
-  onChange?: (value: string) => void;
+  onChange: (value: string) => void;
 }
 
 const InputFieldWithIcon: React.FC<InputFieldWithIconProps> = ({
